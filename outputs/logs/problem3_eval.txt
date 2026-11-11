@@ -1,1 +1,1 @@
-problem3: MNIST test loss 0.0913 | test accuracy 0.9804
+problem3: MNIST test loss 0.0879 | test accuracy 0.9810

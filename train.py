@@ -11,8 +11,17 @@ import data
 import utils
 from models import FCNet
 
-EPOCHS = 20
-CONFIGS = [([128], nn.ReLU), ([256, 128], nn.ReLU), ([512, 256, 128], nn.ReLU), ([256, 128], nn.Tanh)]
+EPOCHS = 50
+CONFIGS = [
+    ([128], nn.ReLU, 0.0),
+    ([256, 128], nn.ReLU, 0.0),
+    ([512, 256, 128], nn.ReLU, 0.0),
+    ([256, 128], nn.Tanh, 0.0),
+    ([512, 256, 128, 64], nn.ReLU, 0.2),
+    ([512, 512, 256, 256, 128], nn.ReLU, 0.0),
+    ([512, 512, 256, 256, 128], nn.ReLU, 0.2),
+    ([1024, 512, 256, 128, 64, 32], nn.ReLU, 0.2),
+]
 
 
 def run_classical(task, split, log):
@@ -32,27 +41,33 @@ def run_classical(task, split, log):
 def run_images(task, name):
     log = utils.get_log(utils.LOGS / f"{task}_train.txt")
     log(f"{task}: {name} fully connected network on {utils.DEVICE}")
-    train_dl, test_dl, classes = data.get_loaders(name)
+    train_dl, val_dl, test_dl, classes = data.get_loaders(name)
     X, y = train_dl.dataset.tensors
     utils.plot_images([X[y == c][0] for c in range(10)], classes, utils.FIGURES / f"{task}_samples.png")
     loss_fn = nn.CrossEntropyLoss()
-    best_acc = 0
-    for hidden, activation in CONFIGS:
-        log(f"hidden={hidden} activation={activation.__name__}")
+    (utils.FIGURES / f"{task}_configs").mkdir(exist_ok=True)
+    best_val_acc = 0
+    for hidden, activation, dropout in CONFIGS:
+        log(f"hidden={hidden} activation={activation.__name__} dropout={dropout}")
         torch.manual_seed(42)
-        model = FCNet(hidden, activation).to(utils.DEVICE)
-        optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+        model = FCNet(hidden, activation, dropout).to(utils.DEVICE)
+        optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3)
         start = time.time()
-        results = utils.train(model, train_dl, test_dl, loss_fn, optimizer, EPOCHS, log)
-        acc = results["test_acc"][-1]
-        log(f"  training time {time.time() - start:.1f}s | test accuracy {acc:.4f}")
-        if acc > best_acc:
-            best_acc = acc
+        results = utils.train(model, train_dl, val_dl, loss_fn, optimizer, EPOCHS, log)
+        seconds = time.time() - start
+        _, val_acc = utils.test_step(model, val_dl, loss_fn)
+        log(f"  training time {seconds:.1f}s | epochs run {len(results['train_loss'])} | validation accuracy {val_acc:.4f}")
+        title = f"{name}: hidden={hidden}, {activation.__name__}, dropout={dropout}"
+        tag = f"{'-'.join(map(str, hidden))}_{activation.__name__}_dropout{dropout}"
+        utils.plot_loss_curves(results, title, utils.FIGURES / f"{task}_configs" / f"{tag}.png")
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
+            _, test_acc = utils.test_step(model, test_dl, loss_fn)
             best_summary = str(summary(model, input_size=(1, 28, 28), verbose=0))
-            checkpoint ={"hidden": hidden, "activation": activation.__name__, "state_dict": model.state_dict()}
+            checkpoint = {"hidden": hidden, "activation": activation.__name__, "dropout": dropout, "state_dict": model.state_dict()}
             torch.save(checkpoint, utils.MODELS / f"{task}.pth")
-            utils.plot_loss_curves(results, f"{name}: hidden={hidden}, {activation.__name__}", utils.FIGURES / f"{task}_loss.png")
-    log(f"best: hidden={checkpoint['hidden']} activation={checkpoint['activation']} | test accuracy {best_acc:.4f}")
+            utils.plot_loss_curves(results, title, utils.FIGURES / f"{task}_loss.png")
+    log(f"best: hidden={checkpoint['hidden']} activation={checkpoint['activation']} dropout={checkpoint['dropout']} | validation accuracy {best_val_acc:.4f} | test accuracy {test_acc:.4f}")
     log(best_summary)
     (utils.LOGS / f"{task}_model_summary.txt").write_text(best_summary, encoding="utf-8")
 

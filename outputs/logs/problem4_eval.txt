@@ -1,1 +1,1 @@
-problem4: FashionMNIST test loss 0.3318 | test accuracy 0.8934
+problem4: FashionMNIST test loss 0.3224 | test accuracy 0.8857

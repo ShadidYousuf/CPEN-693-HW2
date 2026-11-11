@@ -17,9 +17,9 @@ def eval_classical(task, split, log):
 
 def eval_images(task, name):
     log = utils.get_log(utils.LOGS / f"{task}_eval.txt")
-    _, test_dl, _ = data.get_loaders(name)
+    _, _, test_dl, _ = data.get_loaders(name)
     checkpoint = torch.load(utils.MODELS / f"{task}.pth", map_location=utils.DEVICE)
-    model = FCNet(checkpoint["hidden"], getattr(nn, checkpoint["activation"])).to(utils.DEVICE)
+    model = FCNet(checkpoint["hidden"], getattr(nn, checkpoint["activation"]), checkpoint["dropout"]).to(utils.DEVICE)
     model.load_state_dict(checkpoint["state_dict"])
     test_loss, test_acc = utils.test_step(model, test_dl, nn.CrossEntropyLoss())
     log(f"{task}: {name} test loss {test_loss:.4f} | test accuracy {test_acc:.4f}")

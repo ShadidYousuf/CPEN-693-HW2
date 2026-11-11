@@ -1,6 +1,7 @@
 from pathlib import Path
 import numpy as np
 import pandas as pd
+import torch
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from torch.utils.data import DataLoader, TensorDataset
@@ -42,6 +43,9 @@ def get_loaders(name, batch_size=128):
     dataset = getattr(datasets, name)
     train = dataset(DATA, train=True, download=True)
     test = dataset(DATA, train=False, download=True)
-    train_dl = DataLoader(TensorDataset(train.data.float() / 255, train.targets), batch_size, shuffle=True)
+    order = torch.randperm(len(train), generator=torch.Generator().manual_seed(42))
+    X, y = train.data.float()[order] / 255, train.targets[order]
+    train_dl = DataLoader(TensorDataset(X[5000:], y[5000:]), batch_size, shuffle=True)
+    val_dl = DataLoader(TensorDataset(X[:5000], y[:5000]), batch_size)
     test_dl = DataLoader(TensorDataset(test.data.float() / 255, test.targets), batch_size)
-    return train_dl, test_dl, train.classes
+    return train_dl, val_dl, test_dl, train.classes

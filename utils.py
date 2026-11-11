@@ -1,3 +1,4 @@
+import copy
 import sys
 from pathlib import Path
 import matplotlib
@@ -49,15 +50,25 @@ def test_step(model, dataloader, loss_fn):
     return test_loss / len(dataloader), correct / len(dataloader.dataset)
 
 
-def train(model, train_dl, test_dl, loss_fn, optimizer, epochs, log):
-    results = {"train_loss": [], "test_loss": [], "test_acc": []}
+def train(model, train_dl, val_dl, loss_fn, optimizer, epochs, log, patience=5):
+    results = {"train_loss": [], "val_loss": [], "val_acc": []}
+    best_loss, best_state, wait = float("inf"), None, 0
     for epoch in range(epochs):
         train_loss = train_step(model, train_dl, loss_fn, optimizer)
-        test_loss, test_acc = test_step(model, test_dl, loss_fn)
-        log(f"  epoch {epoch + 1:2d} | train loss {train_loss:.4f} | val loss {test_loss:.4f} | test acc {test_acc:.4f}")
+        val_loss, val_acc = test_step(model, val_dl, loss_fn)
+        log(f"  epoch {epoch + 1:2d} | train loss {train_loss:.4f} | val loss {val_loss:.4f} | val acc {val_acc:.4f}")
         results["train_loss"].append(train_loss)
-        results["test_loss"].append(test_loss)
-        results["test_acc"].append(test_acc)
+        results["val_loss"].append(val_loss)
+        results["val_acc"].append(val_acc)
+        if val_loss < best_loss:
+            best_loss, best_state, wait = val_loss, copy.deepcopy(model.state_dict()), 0
+        else:
+            wait += 1
+            if wait == patience:
+                log(f"  early stopping at epoch {epoch + 1}")
+                break
+    model.load_state_dict(best_state)
+    log(f"  restored weights of best epoch {results['val_loss'].index(best_loss) + 1}")
     return results
 
 
@@ -69,9 +80,11 @@ def binary_report(y_true, y_pred, log):
 
 def plot_loss_curves(results, title, path):
     epochs = range(1, len(results["train_loss"]) + 1)
+    best_epoch = results["val_loss"].index(min(results["val_loss"])) + 1
     plt.figure(figsize=(7, 4))
     plt.plot(epochs, results["train_loss"], label="train loss")
-    plt.plot(epochs, results["test_loss"], label="validation loss")
+    plt.plot(epochs, results["val_loss"], label="validation loss")
+    plt.axvline(best_epoch, color="gray", linestyle="--", label=f"chosen epoch ({best_epoch})")
     plt.title(title)
     plt.xlabel("Epoch")
     plt.ylabel("Loss")

@@ -1,114 +1,197 @@
 problem3: MNIST fully connected network on cuda
-hidden=[128] activation=ReLU
-  epoch  1 | train loss 0.4098 | val loss 0.2230 | test acc 0.9341
-  epoch  2 | train loss 0.1932 | val loss 0.1578 | test acc 0.9538
-  epoch  3 | train loss 0.1402 | val loss 0.1329 | test acc 0.9598
-  epoch  4 | train loss 0.1091 | val loss 0.1087 | test acc 0.9678
-  epoch  5 | train loss 0.0880 | val loss 0.0946 | test acc 0.9712
-  epoch  6 | train loss 0.0728 | val loss 0.0870 | test acc 0.9734
-  epoch  7 | train loss 0.0616 | val loss 0.0838 | test acc 0.9751
-  epoch  8 | train loss 0.0515 | val loss 0.0787 | test acc 0.9765
-  epoch  9 | train loss 0.0431 | val loss 0.0738 | test acc 0.9766
-  epoch 10 | train loss 0.0369 | val loss 0.0799 | test acc 0.9756
-  epoch 11 | train loss 0.0322 | val loss 0.0741 | test acc 0.9774
-  epoch 12 | train loss 0.0272 | val loss 0.0711 | test acc 0.9787
-  epoch 13 | train loss 0.0232 | val loss 0.0690 | test acc 0.9788
-  epoch 14 | train loss 0.0197 | val loss 0.0755 | test acc 0.9774
-  epoch 15 | train loss 0.0166 | val loss 0.0695 | test acc 0.9795
-  epoch 16 | train loss 0.0143 | val loss 0.0703 | test acc 0.9796
-  epoch 17 | train loss 0.0122 | val loss 0.0750 | test acc 0.9798
-  epoch 18 | train loss 0.0104 | val loss 0.0790 | test acc 0.9791
-  epoch 19 | train loss 0.0104 | val loss 0.0819 | test acc 0.9774
-  epoch 20 | train loss 0.0081 | val loss 0.0781 | test acc 0.9787
-  training time 12.2s | test accuracy 0.9787
-hidden=[256, 128] activation=ReLU
-  epoch  1 | train loss 0.3529 | val loss 0.1569 | test acc 0.9534
-  epoch  2 | train loss 0.1352 | val loss 0.1041 | test acc 0.9683
-  epoch  3 | train loss 0.0889 | val loss 0.0904 | test acc 0.9711
-  epoch  4 | train loss 0.0633 | val loss 0.0715 | test acc 0.9780
-  epoch  5 | train loss 0.0480 | val loss 0.0727 | test acc 0.9764
-  epoch  6 | train loss 0.0373 | val loss 0.0691 | test acc 0.9782
-  epoch  7 | train loss 0.0269 | val loss 0.0743 | test acc 0.9772
-  epoch  8 | train loss 0.0226 | val loss 0.0639 | test acc 0.9809
-  epoch  9 | train loss 0.0207 | val loss 0.0725 | test acc 0.9803
-  epoch 10 | train loss 0.0141 | val loss 0.0733 | test acc 0.9779
-  epoch 11 | train loss 0.0142 | val loss 0.0711 | test acc 0.9809
-  epoch 12 | train loss 0.0112 | val loss 0.0878 | test acc 0.9763
-  epoch 13 | train loss 0.0122 | val loss 0.0944 | test acc 0.9772
-  epoch 14 | train loss 0.0105 | val loss 0.0886 | test acc 0.9776
-  epoch 15 | train loss 0.0065 | val loss 0.0803 | test acc 0.9808
-  epoch 16 | train loss 0.0085 | val loss 0.0835 | test acc 0.9805
-  epoch 17 | train loss 0.0077 | val loss 0.0955 | test acc 0.9808
-  epoch 18 | train loss 0.0090 | val loss 0.0996 | test acc 0.9815
-  epoch 19 | train loss 0.0052 | val loss 0.0939 | test acc 0.9816
-  epoch 20 | train loss 0.0070 | val loss 0.1095 | test acc 0.9788
-  training time 13.5s | test accuracy 0.9788
-hidden=[512, 256, 128] activation=ReLU
-  epoch  1 | train loss 0.3176 | val loss 0.1304 | test acc 0.9587
-  epoch  2 | train loss 0.1051 | val loss 0.1043 | test acc 0.9674
-  epoch  3 | train loss 0.0686 | val loss 0.0852 | test acc 0.9719
-  epoch  4 | train loss 0.0517 | val loss 0.0701 | test acc 0.9792
-  epoch  5 | train loss 0.0365 | val loss 0.0753 | test acc 0.9773
-  epoch  6 | train loss 0.0303 | val loss 0.1051 | test acc 0.9707
-  epoch  7 | train loss 0.0247 | val loss 0.0746 | test acc 0.9803
-  epoch  8 | train loss 0.0206 | val loss 0.0953 | test acc 0.9765
-  epoch  9 | train loss 0.0191 | val loss 0.0951 | test acc 0.9756
-  epoch 10 | train loss 0.0168 | val loss 0.0846 | test acc 0.9783
-  epoch 11 | train loss 0.0142 | val loss 0.0875 | test acc 0.9810
-  epoch 12 | train loss 0.0141 | val loss 0.0827 | test acc 0.9822
-  epoch 13 | train loss 0.0117 | val loss 0.0971 | test acc 0.9788
-  epoch 14 | train loss 0.0142 | val loss 0.0853 | test acc 0.9797
-  epoch 15 | train loss 0.0101 | val loss 0.0933 | test acc 0.9799
-  epoch 16 | train loss 0.0070 | val loss 0.0985 | test acc 0.9804
-  epoch 17 | train loss 0.0118 | val loss 0.0898 | test acc 0.9802
-  epoch 18 | train loss 0.0086 | val loss 0.0975 | test acc 0.9789
-  epoch 19 | train loss 0.0081 | val loss 0.0992 | test acc 0.9799
-  epoch 20 | train loss 0.0115 | val loss 0.0913 | test acc 0.9804
-  training time 14.6s | test accuracy 0.9804
-hidden=[256, 128] activation=Tanh
-  epoch  1 | train loss 0.3384 | val loss 0.1775 | test acc 0.9465
-  epoch  2 | train loss 0.1522 | val loss 0.1222 | test acc 0.9631
-  epoch  3 | train loss 0.1035 | val loss 0.1026 | test acc 0.9680
-  epoch  4 | train loss 0.0770 | val loss 0.0874 | test acc 0.9716
-  epoch  5 | train loss 0.0586 | val loss 0.0751 | test acc 0.9767
-  epoch  6 | train loss 0.0453 | val loss 0.0773 | test acc 0.9761
-  epoch  7 | train loss 0.0332 | val loss 0.0746 | test acc 0.9770
-  epoch  8 | train loss 0.0260 | val loss 0.0674 | test acc 0.9799
-  epoch  9 | train loss 0.0211 | val loss 0.0713 | test acc 0.9785
-  epoch 10 | train loss 0.0158 | val loss 0.0713 | test acc 0.9787
-  epoch 11 | train loss 0.0128 | val loss 0.0769 | test acc 0.9780
-  epoch 12 | train loss 0.0100 | val loss 0.0773 | test acc 0.9780
-  epoch 13 | train loss 0.0090 | val loss 0.0852 | test acc 0.9782
-  epoch 14 | train loss 0.0104 | val loss 0.0908 | test acc 0.9751
-  epoch 15 | train loss 0.0057 | val loss 0.0835 | test acc 0.9786
-  epoch 16 | train loss 0.0066 | val loss 0.0814 | test acc 0.9788
-  epoch 17 | train loss 0.0037 | val loss 0.1002 | test acc 0.9760
-  epoch 18 | train loss 0.0057 | val loss 0.0791 | test acc 0.9804
-  epoch 19 | train loss 0.0047 | val loss 0.0816 | test acc 0.9792
-  epoch 20 | train loss 0.0093 | val loss 0.0978 | test acc 0.9768
-  training time 13.4s | test accuracy 0.9768
-best: hidden=[512, 256, 128] activation=ReLU | test accuracy 0.9804
+hidden=[128] activation=ReLU dropout=0.0
+  epoch  1 | train loss 0.4270 | val loss 0.2591 | val acc 0.9206
+  epoch  2 | train loss 0.2037 | val loss 0.1840 | val acc 0.9448
+  epoch  3 | train loss 0.1485 | val loss 0.1470 | val acc 0.9566
+  epoch  4 | train loss 0.1155 | val loss 0.1279 | val acc 0.9590
+  epoch  5 | train loss 0.0928 | val loss 0.1093 | val acc 0.9682
+  epoch  6 | train loss 0.0770 | val loss 0.0998 | val acc 0.9682
+  epoch  7 | train loss 0.0647 | val loss 0.0925 | val acc 0.9724
+  epoch  8 | train loss 0.0555 | val loss 0.0865 | val acc 0.9726
+  epoch  9 | train loss 0.0465 | val loss 0.0834 | val acc 0.9742
+  epoch 10 | train loss 0.0402 | val loss 0.0855 | val acc 0.9754
+  epoch 11 | train loss 0.0347 | val loss 0.0794 | val acc 0.9752
+  epoch 12 | train loss 0.0299 | val loss 0.0792 | val acc 0.9758
+  epoch 13 | train loss 0.0248 | val loss 0.0772 | val acc 0.9760
+  epoch 14 | train loss 0.0210 | val loss 0.0812 | val acc 0.9774
+  epoch 15 | train loss 0.0186 | val loss 0.0804 | val acc 0.9756
+  epoch 16 | train loss 0.0157 | val loss 0.0816 | val acc 0.9772
+  epoch 17 | train loss 0.0138 | val loss 0.0772 | val acc 0.9792
+  epoch 18 | train loss 0.0116 | val loss 0.0753 | val acc 0.9792
+  epoch 19 | train loss 0.0103 | val loss 0.0838 | val acc 0.9748
+  epoch 20 | train loss 0.0092 | val loss 0.0782 | val acc 0.9782
+  epoch 21 | train loss 0.0076 | val loss 0.0815 | val acc 0.9782
+  epoch 22 | train loss 0.0069 | val loss 0.0857 | val acc 0.9778
+  epoch 23 | train loss 0.0065 | val loss 0.0829 | val acc 0.9790
+  early stopping at epoch 23
+  restored weights of best epoch 18
+  training time 12.3s | epochs run 23 | validation accuracy 0.9792
+hidden=[256, 128] activation=ReLU dropout=0.0
+  epoch  1 | train loss 0.3668 | val loss 0.1869 | val acc 0.9420
+  epoch  2 | train loss 0.1455 | val loss 0.1325 | val acc 0.9584
+  epoch  3 | train loss 0.0971 | val loss 0.1009 | val acc 0.9666
+  epoch  4 | train loss 0.0718 | val loss 0.0886 | val acc 0.9714
+  epoch  5 | train loss 0.0537 | val loss 0.0810 | val acc 0.9754
+  epoch  6 | train loss 0.0413 | val loss 0.0814 | val acc 0.9742
+  epoch  7 | train loss 0.0320 | val loss 0.0857 | val acc 0.9752
+  epoch  8 | train loss 0.0256 | val loss 0.0780 | val acc 0.9774
+  epoch  9 | train loss 0.0202 | val loss 0.0835 | val acc 0.9762
+  epoch 10 | train loss 0.0160 | val loss 0.0846 | val acc 0.9766
+  epoch 11 | train loss 0.0140 | val loss 0.0853 | val acc 0.9768
+  epoch 12 | train loss 0.0139 | val loss 0.0812 | val acc 0.9780
+  epoch 13 | train loss 0.0081 | val loss 0.1025 | val acc 0.9754
+  early stopping at epoch 13
+  restored weights of best epoch 8
+  training time 7.8s | epochs run 13 | validation accuracy 0.9774
+hidden=[512, 256, 128] activation=ReLU dropout=0.0
+  epoch  1 | train loss 0.3263 | val loss 0.1470 | val acc 0.9500
+  epoch  2 | train loss 0.1112 | val loss 0.1419 | val acc 0.9580
+  epoch  3 | train loss 0.0724 | val loss 0.0838 | val acc 0.9734
+  epoch  4 | train loss 0.0530 | val loss 0.0913 | val acc 0.9736
+  epoch  5 | train loss 0.0403 | val loss 0.0835 | val acc 0.9754
+  epoch  6 | train loss 0.0292 | val loss 0.0977 | val acc 0.9734
+  epoch  7 | train loss 0.0257 | val loss 0.0892 | val acc 0.9740
+  epoch  8 | train loss 0.0218 | val loss 0.0935 | val acc 0.9770
+  epoch  9 | train loss 0.0203 | val loss 0.0830 | val acc 0.9796
+  epoch 10 | train loss 0.0163 | val loss 0.0890 | val acc 0.9808
+  epoch 11 | train loss 0.0154 | val loss 0.0911 | val acc 0.9782
+  epoch 12 | train loss 0.0139 | val loss 0.0804 | val acc 0.9826
+  epoch 13 | train loss 0.0098 | val loss 0.0791 | val acc 0.9820
+  epoch 14 | train loss 0.0132 | val loss 0.0878 | val acc 0.9800
+  epoch 15 | train loss 0.0144 | val loss 0.1034 | val acc 0.9762
+  epoch 16 | train loss 0.0091 | val loss 0.0951 | val acc 0.9800
+  epoch 17 | train loss 0.0091 | val loss 0.1079 | val acc 0.9786
+  epoch 18 | train loss 0.0106 | val loss 0.1090 | val acc 0.9788
+  early stopping at epoch 18
+  restored weights of best epoch 13
+  training time 11.7s | epochs run 18 | validation accuracy 0.9820
+hidden=[256, 128] activation=Tanh dropout=0.0
+  epoch  1 | train loss 0.3482 | val loss 0.2108 | val acc 0.9324
+  epoch  2 | train loss 0.1624 | val loss 0.1621 | val acc 0.9466
+  epoch  3 | train loss 0.1119 | val loss 0.1180 | val acc 0.9630
+  epoch  4 | train loss 0.0833 | val loss 0.1020 | val acc 0.9692
+  epoch  5 | train loss 0.0633 | val loss 0.0963 | val acc 0.9702
+  epoch  6 | train loss 0.0499 | val loss 0.0892 | val acc 0.9724
+  epoch  7 | train loss 0.0379 | val loss 0.0897 | val acc 0.9734
+  epoch  8 | train loss 0.0300 | val loss 0.0792 | val acc 0.9768
+  epoch  9 | train loss 0.0234 | val loss 0.0847 | val acc 0.9754
+  epoch 10 | train loss 0.0176 | val loss 0.0849 | val acc 0.9758
+  epoch 11 | train loss 0.0154 | val loss 0.0812 | val acc 0.9768
+  epoch 12 | train loss 0.0117 | val loss 0.0809 | val acc 0.9760
+  epoch 13 | train loss 0.0101 | val loss 0.0852 | val acc 0.9752
+  early stopping at epoch 13
+  restored weights of best epoch 8
+  training time 7.8s | epochs run 13 | validation accuracy 0.9768
+hidden=[512, 256, 128, 64] activation=ReLU dropout=0.2
+  epoch  1 | train loss 0.4608 | val loss 0.1602 | val acc 0.9488
+  epoch  2 | train loss 0.1622 | val loss 0.1305 | val acc 0.9610
+  epoch  3 | train loss 0.1142 | val loss 0.1013 | val acc 0.9714
+  epoch  4 | train loss 0.0886 | val loss 0.0884 | val acc 0.9706
+  epoch  5 | train loss 0.0762 | val loss 0.1005 | val acc 0.9722
+  epoch  6 | train loss 0.0652 | val loss 0.0792 | val acc 0.9772
+  epoch  7 | train loss 0.0564 | val loss 0.0800 | val acc 0.9756
+  epoch  8 | train loss 0.0513 | val loss 0.0888 | val acc 0.9766
+  epoch  9 | train loss 0.0467 | val loss 0.0719 | val acc 0.9786
+  epoch 10 | train loss 0.0408 | val loss 0.0716 | val acc 0.9798
+  epoch 11 | train loss 0.0371 | val loss 0.0758 | val acc 0.9818
+  epoch 12 | train loss 0.0359 | val loss 0.0792 | val acc 0.9820
+  epoch 13 | train loss 0.0325 | val loss 0.0827 | val acc 0.9800
+  epoch 14 | train loss 0.0315 | val loss 0.0966 | val acc 0.9758
+  epoch 15 | train loss 0.0302 | val loss 0.0789 | val acc 0.9814
+  early stopping at epoch 15
+  restored weights of best epoch 10
+  training time 11.3s | epochs run 15 | validation accuracy 0.9798
+hidden=[512, 512, 256, 256, 128] activation=ReLU dropout=0.0
+  epoch  1 | train loss 0.3701 | val loss 0.1819 | val acc 0.9416
+  epoch  2 | train loss 0.1224 | val loss 0.1276 | val acc 0.9606
+  epoch  3 | train loss 0.0812 | val loss 0.1001 | val acc 0.9702
+  epoch  4 | train loss 0.0621 | val loss 0.0912 | val acc 0.9724
+  epoch  5 | train loss 0.0513 | val loss 0.0911 | val acc 0.9762
+  epoch  6 | train loss 0.0405 | val loss 0.0957 | val acc 0.9746
+  epoch  7 | train loss 0.0334 | val loss 0.0980 | val acc 0.9728
+  epoch  8 | train loss 0.0344 | val loss 0.1020 | val acc 0.9750
+  epoch  9 | train loss 0.0288 | val loss 0.0991 | val acc 0.9756
+  epoch 10 | train loss 0.0249 | val loss 0.0987 | val acc 0.9760
+  early stopping at epoch 10
+  restored weights of best epoch 5
+  training time 7.4s | epochs run 10 | validation accuracy 0.9762
+hidden=[512, 512, 256, 256, 128] activation=ReLU dropout=0.2
+  epoch  1 | train loss 0.4266 | val loss 0.1707 | val acc 0.9502
+  epoch  2 | train loss 0.1531 | val loss 0.1333 | val acc 0.9600
+  epoch  3 | train loss 0.1149 | val loss 0.1015 | val acc 0.9698
+  epoch  4 | train loss 0.0883 | val loss 0.0997 | val acc 0.9720
+  epoch  5 | train loss 0.0753 | val loss 0.0980 | val acc 0.9726
+  epoch  6 | train loss 0.0674 | val loss 0.0828 | val acc 0.9798
+  epoch  7 | train loss 0.0590 | val loss 0.0823 | val acc 0.9780
+  epoch  8 | train loss 0.0515 | val loss 0.0979 | val acc 0.9746
+  epoch  9 | train loss 0.0497 | val loss 0.0867 | val acc 0.9774
+  epoch 10 | train loss 0.0441 | val loss 0.0913 | val acc 0.9754
+  epoch 11 | train loss 0.0401 | val loss 0.0799 | val acc 0.9810
+  epoch 12 | train loss 0.0368 | val loss 0.0808 | val acc 0.9790
+  epoch 13 | train loss 0.0350 | val loss 0.0857 | val acc 0.9798
+  epoch 14 | train loss 0.0332 | val loss 0.1026 | val acc 0.9790
+  epoch 15 | train loss 0.0333 | val loss 0.1070 | val acc 0.9796
+  epoch 16 | train loss 0.0297 | val loss 0.0967 | val acc 0.9810
+  early stopping at epoch 16
+  restored weights of best epoch 11
+  training time 13.0s | epochs run 16 | validation accuracy 0.9810
+hidden=[1024, 512, 256, 128, 64, 32] activation=ReLU dropout=0.2
+  epoch  1 | train loss 0.5630 | val loss 0.2028 | val acc 0.9448
+  epoch  2 | train loss 0.2064 | val loss 0.1505 | val acc 0.9572
+  epoch  3 | train loss 0.1484 | val loss 0.1182 | val acc 0.9672
+  epoch  4 | train loss 0.1174 | val loss 0.1127 | val acc 0.9730
+  epoch  5 | train loss 0.0986 | val loss 0.1159 | val acc 0.9698
+  epoch  6 | train loss 0.0842 | val loss 0.1070 | val acc 0.9730
+  epoch  7 | train loss 0.0742 | val loss 0.1039 | val acc 0.9738
+  epoch  8 | train loss 0.0689 | val loss 0.1042 | val acc 0.9768
+  epoch  9 | train loss 0.0602 | val loss 0.0974 | val acc 0.9794
+  epoch 10 | train loss 0.0491 | val loss 0.1119 | val acc 0.9780
+  epoch 11 | train loss 0.0522 | val loss 0.1002 | val acc 0.9792
+  epoch 12 | train loss 0.0484 | val loss 0.1065 | val acc 0.9758
+  epoch 13 | train loss 0.0455 | val loss 0.1023 | val acc 0.9804
+  epoch 14 | train loss 0.0378 | val loss 0.0869 | val acc 0.9828
+  epoch 15 | train loss 0.0356 | val loss 0.1006 | val acc 0.9784
+  epoch 16 | train loss 0.0336 | val loss 0.1169 | val acc 0.9798
+  epoch 17 | train loss 0.0373 | val loss 0.1079 | val acc 0.9784
+  epoch 18 | train loss 0.0335 | val loss 0.1045 | val acc 0.9820
+  epoch 19 | train loss 0.0314 | val loss 0.1271 | val acc 0.9812
+  early stopping at epoch 19
+  restored weights of best epoch 14
+  training time 17.0s | epochs run 19 | validation accuracy 0.9828
+best: hidden=[1024, 512, 256, 128, 64, 32] activation=ReLU dropout=0.2 | validation accuracy 0.9828 | test accuracy 0.9810
 ==========================================================================================
 Layer (type:depth-idx)                   Output Shape              Param #
 ==========================================================================================
 FCNet                                    [1, 10]                   --
 ├─Sequential: 1-1                        [1, 10]                   --
 │    └─Flatten: 2-1                      [1, 784]                  --
-│    └─Linear: 2-2                       [1, 512]                  401,920
-│    └─ReLU: 2-3                         [1, 512]                  --
-│    └─Linear: 2-4                       [1, 256]                  131,328
-│    └─ReLU: 2-5                         [1, 256]                  --
-│    └─Linear: 2-6                       [1, 128]                  32,896
-│    └─ReLU: 2-7                         [1, 128]                  --
-│    └─Linear: 2-8                       [1, 10]                   1,290
+│    └─Linear: 2-2                       [1, 1024]                 803,840
+│    └─ReLU: 2-3                         [1, 1024]                 --
+│    └─Dropout: 2-4                      [1, 1024]                 --
+│    └─Linear: 2-5                       [1, 512]                  524,800
+│    └─ReLU: 2-6                         [1, 512]                  --
+│    └─Dropout: 2-7                      [1, 512]                  --
+│    └─Linear: 2-8                       [1, 256]                  131,328
+│    └─ReLU: 2-9                         [1, 256]                  --
+│    └─Dropout: 2-10                     [1, 256]                  --
+│    └─Linear: 2-11                      [1, 128]                  32,896
+│    └─ReLU: 2-12                        [1, 128]                  --
+│    └─Dropout: 2-13                     [1, 128]                  --
+│    └─Linear: 2-14                      [1, 64]                   8,256
+│    └─ReLU: 2-15                        [1, 64]                   --
+│    └─Dropout: 2-16                     [1, 64]                   --
+│    └─Linear: 2-17                      [1, 32]                   2,080
+│    └─ReLU: 2-18                        [1, 32]                   --
+│    └─Dropout: 2-19                     [1, 32]                   --
+│    └─Linear: 2-20                      [1, 10]                   330
 ==========================================================================================
-Total params: 567,434
-Trainable params: 567,434
+Total params: 1,503,530
+Trainable params: 1,503,530
 Non-trainable params: 0
-Total mult-adds (Units.MEGABYTES): 0.57
+Total mult-adds (Units.MEGABYTES): 1.50
 ==========================================================================================
 Input size (MB): 0.00
-Forward/backward pass size (MB): 0.01
-Params size (MB): 2.27
-Estimated Total Size (MB): 2.28
+Forward/backward pass size (MB): 0.02
+Params size (MB): 6.01
+Estimated Total Size (MB): 6.03
 ==========================================================================================
