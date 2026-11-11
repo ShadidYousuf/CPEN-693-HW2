@@ -1,0 +1,112 @@
+problem4: FashionMNIST fully connected network on cuda
+hidden=[128] activation=ReLU
+  epoch  1 | train loss 0.5919 | val loss 0.4777 | test acc 0.8382
+  epoch  2 | train loss 0.4215 | val loss 0.4528 | test acc 0.8391
+  epoch  3 | train loss 0.3821 | val loss 0.4028 | test acc 0.8544
+  epoch  4 | train loss 0.3562 | val loss 0.4080 | test acc 0.8573
+  epoch  5 | train loss 0.3346 | val loss 0.3690 | test acc 0.8663
+  epoch  6 | train loss 0.3162 | val loss 0.3616 | test acc 0.8677
+  epoch  7 | train loss 0.3040 | val loss 0.3545 | test acc 0.8687
+  epoch  8 | train loss 0.2925 | val loss 0.3559 | test acc 0.8731
+  epoch  9 | train loss 0.2825 | val loss 0.3373 | test acc 0.8763
+  epoch 10 | train loss 0.2718 | val loss 0.3315 | test acc 0.8793
+  epoch 11 | train loss 0.2640 | val loss 0.3367 | test acc 0.8771
+  epoch 12 | train loss 0.2587 | val loss 0.3359 | test acc 0.8789
+  epoch 13 | train loss 0.2505 | val loss 0.3450 | test acc 0.8759
+  epoch 14 | train loss 0.2431 | val loss 0.3367 | test acc 0.8816
+  epoch 15 | train loss 0.2375 | val loss 0.3610 | test acc 0.8696
+  epoch 16 | train loss 0.2331 | val loss 0.3293 | test acc 0.8836
+  epoch 17 | train loss 0.2255 | val loss 0.3442 | test acc 0.8783
+  epoch 18 | train loss 0.2210 | val loss 0.3236 | test acc 0.8886
+  epoch 19 | train loss 0.2154 | val loss 0.3265 | test acc 0.8860
+  epoch 20 | train loss 0.2125 | val loss 0.3298 | test acc 0.8848
+  training time 12.0s | test accuracy 0.8848
+hidden=[256, 128] activation=ReLU
+  epoch  1 | train loss 0.5698 | val loss 0.4409 | test acc 0.8436
+  epoch  2 | train loss 0.3856 | val loss 0.4122 | test acc 0.8523
+  epoch  3 | train loss 0.3424 | val loss 0.3698 | test acc 0.8673
+  epoch  4 | train loss 0.3193 | val loss 0.3714 | test acc 0.8644
+  epoch  5 | train loss 0.2975 | val loss 0.3455 | test acc 0.8770
+  epoch  6 | train loss 0.2816 | val loss 0.3280 | test acc 0.8801
+  epoch  7 | train loss 0.2670 | val loss 0.3314 | test acc 0.8801
+  epoch  8 | train loss 0.2577 | val loss 0.3449 | test acc 0.8734
+  epoch  9 | train loss 0.2464 | val loss 0.3223 | test acc 0.8823
+  epoch 10 | train loss 0.2360 | val loss 0.3206 | test acc 0.8882
+  epoch 11 | train loss 0.2265 | val loss 0.3267 | test acc 0.8861
+  epoch 12 | train loss 0.2177 | val loss 0.3267 | test acc 0.8845
+  epoch 13 | train loss 0.2127 | val loss 0.3201 | test acc 0.8911
+  epoch 14 | train loss 0.2052 | val loss 0.3255 | test acc 0.8899
+  epoch 15 | train loss 0.1956 | val loss 0.3150 | test acc 0.8934
+  epoch 16 | train loss 0.1873 | val loss 0.3383 | test acc 0.8840
+  epoch 17 | train loss 0.1848 | val loss 0.3264 | test acc 0.8933
+  epoch 18 | train loss 0.1760 | val loss 0.3406 | test acc 0.8861
+  epoch 19 | train loss 0.1722 | val loss 0.3420 | test acc 0.8918
+  epoch 20 | train loss 0.1653 | val loss 0.3318 | test acc 0.8934
+  training time 13.6s | test accuracy 0.8934
+hidden=[512, 256, 128] activation=ReLU
+  epoch  1 | train loss 0.5552 | val loss 0.4360 | test acc 0.8401
+  epoch  2 | train loss 0.3743 | val loss 0.4015 | test acc 0.8552
+  epoch  3 | train loss 0.3335 | val loss 0.3861 | test acc 0.8626
+  epoch  4 | train loss 0.3086 | val loss 0.3491 | test acc 0.8691
+  epoch  5 | train loss 0.2888 | val loss 0.3365 | test acc 0.8778
+  epoch  6 | train loss 0.2726 | val loss 0.3301 | test acc 0.8806
+  epoch  7 | train loss 0.2591 | val loss 0.3367 | test acc 0.8819
+  epoch  8 | train loss 0.2486 | val loss 0.3197 | test acc 0.8867
+  epoch  9 | train loss 0.2358 | val loss 0.3450 | test acc 0.8786
+  epoch 10 | train loss 0.2271 | val loss 0.3205 | test acc 0.8875
+  epoch 11 | train loss 0.2168 | val loss 0.3233 | test acc 0.8893
+  epoch 12 | train loss 0.2096 | val loss 0.3235 | test acc 0.8889
+  epoch 13 | train loss 0.2040 | val loss 0.3377 | test acc 0.8895
+  epoch 14 | train loss 0.1940 | val loss 0.3228 | test acc 0.8908
+  epoch 15 | train loss 0.1879 | val loss 0.3463 | test acc 0.8848
+  epoch 16 | train loss 0.1811 | val loss 0.3432 | test acc 0.8892
+  epoch 17 | train loss 0.1728 | val loss 0.3467 | test acc 0.8912
+  epoch 18 | train loss 0.1661 | val loss 0.3492 | test acc 0.8924
+  epoch 19 | train loss 0.1638 | val loss 0.3403 | test acc 0.8958
+  epoch 20 | train loss 0.1542 | val loss 0.3730 | test acc 0.8894
+  training time 14.5s | test accuracy 0.8894
+hidden=[256, 128] activation=Tanh
+  epoch  1 | train loss 0.5227 | val loss 0.4367 | test acc 0.8420
+  epoch  2 | train loss 0.3760 | val loss 0.4131 | test acc 0.8470
+  epoch  3 | train loss 0.3407 | val loss 0.3671 | test acc 0.8634
+  epoch  4 | train loss 0.3196 | val loss 0.3763 | test acc 0.8617
+  epoch  5 | train loss 0.2977 | val loss 0.3509 | test acc 0.8755
+  epoch  6 | train loss 0.2841 | val loss 0.3329 | test acc 0.8798
+  epoch  7 | train loss 0.2708 | val loss 0.3275 | test acc 0.8783
+  epoch  8 | train loss 0.2597 | val loss 0.3388 | test acc 0.8724
+  epoch  9 | train loss 0.2473 | val loss 0.3179 | test acc 0.8858
+  epoch 10 | train loss 0.2374 | val loss 0.3192 | test acc 0.8816
+  epoch 11 | train loss 0.2255 | val loss 0.3119 | test acc 0.8899
+  epoch 12 | train loss 0.2192 | val loss 0.3391 | test acc 0.8781
+  epoch 13 | train loss 0.2131 | val loss 0.3188 | test acc 0.8873
+  epoch 14 | train loss 0.2063 | val loss 0.3128 | test acc 0.8915
+  epoch 15 | train loss 0.1974 | val loss 0.3108 | test acc 0.8916
+  epoch 16 | train loss 0.1881 | val loss 0.3260 | test acc 0.8861
+  epoch 17 | train loss 0.1818 | val loss 0.3168 | test acc 0.8931
+  epoch 18 | train loss 0.1771 | val loss 0.3303 | test acc 0.8889
+  epoch 19 | train loss 0.1707 | val loss 0.3184 | test acc 0.8902
+  epoch 20 | train loss 0.1629 | val loss 0.3131 | test acc 0.8932
+  training time 13.4s | test accuracy 0.8932
+best: hidden=[256, 128] activation=ReLU | test accuracy 0.8934
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+FCNet                                    [1, 10]                   --
+├─Sequential: 1-1                        [1, 10]                   --
+│    └─Flatten: 2-1                      [1, 784]                  --
+│    └─Linear: 2-2                       [1, 256]                  200,960
+│    └─ReLU: 2-3                         [1, 256]                  --
+│    └─Linear: 2-4                       [1, 128]                  32,896
+│    └─ReLU: 2-5                         [1, 128]                  --
+│    └─Linear: 2-6                       [1, 10]                   1,290
+==========================================================================================
+Total params: 235,146
+Trainable params: 235,146
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 0.24
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.00
+Params size (MB): 0.94
+Estimated Total Size (MB): 0.95
+==========================================================================================

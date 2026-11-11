@@ -1,0 +1,6 @@
+problem1 SVM kernel=rbf
+  confusion matrix [[TN FP] [FN TP]] = [[90 0] [4 49]]
+  sensitivity 0.9245 | specificity 1.0000 | accuracy 0.9720
+problem1 kNN k=7
+  confusion matrix [[TN FP] [FN TP]] = [[90 0] [4 49]]
+  sensitivity 0.9245 | specificity 1.0000 | accuracy 0.9720

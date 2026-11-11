@@ -1,0 +1,18 @@
+problem2_A_vs_D SVM kernel=rbf
+  confusion matrix [[TN FP] [FN TP]] = [[25 0] [18 7]]
+  sensitivity 0.2800 | specificity 1.0000 | accuracy 0.6400
+problem2_A_vs_D kNN k=10
+  confusion matrix [[TN FP] [FN TP]] = [[22 3] [11 14]]
+  sensitivity 0.5600 | specificity 0.8800 | accuracy 0.7200
+problem2_A_vs_E SVM kernel=rbf
+  confusion matrix [[TN FP] [FN TP]] = [[25 0] [1 24]]
+  sensitivity 0.9600 | specificity 1.0000 | accuracy 0.9800
+problem2_A_vs_E kNN k=1
+  confusion matrix [[TN FP] [FN TP]] = [[25 0] [0 25]]
+  sensitivity 1.0000 | specificity 1.0000 | accuracy 1.0000
+problem2_D_vs_E SVM kernel=linear
+  confusion matrix [[TN FP] [FN TP]] = [[23 2] [2 23]]
+  sensitivity 0.9200 | specificity 0.9200 | accuracy 0.9200
+problem2_D_vs_E kNN k=2
+  confusion matrix [[TN FP] [FN TP]] = [[22 3] [1 24]]
+  sensitivity 0.9600 | specificity 0.8800 | accuracy 0.9200

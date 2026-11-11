@@ -1,0 +1,17 @@
+problem1: Breast Cancer, SVM and kNN
+  SVM kernel=linear: accuracy 0.9580
+  SVM kernel=rbf: accuracy 0.9720
+  SVM kernel=poly: accuracy 0.8951
+  SVM kernel=sigmoid: accuracy 0.9510
+  best: SVM kernel=rbf
+  kNN k=1: accuracy 0.9371
+  kNN k=2: accuracy 0.9301
+  kNN k=3: accuracy 0.9580
+  kNN k=4: accuracy 0.9580
+  kNN k=5: accuracy 0.9580
+  kNN k=6: accuracy 0.9650
+  kNN k=7: accuracy 0.9720
+  kNN k=8: accuracy 0.9650
+  kNN k=9: accuracy 0.9580
+  kNN k=10: accuracy 0.9580
+  best: kNN k=7
